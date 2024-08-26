@@ -1,12 +1,18 @@
 {% load common_tags %}
-
-{% if menus %}
-    <ul>
-        {% for menu in menus%}
-            <li><a href='{{ menu }}'>{{ menu }}</li>
-        {% endfor %}
-    </ul>    
-{% elif menu_name %}
-    <h3><a href={% url 'main_menu' %}>В главное меню</h3>
-    {% draw_menu menu_name menu_item %}
-{% endif %}
+{% load static %}
+<html>
+    <head><link rel="stylesheet" href="{% static 'css/style.css' %}"> </head>
+    <body>
+        <h1>Main menu</h1>
+        {% if menus %}
+            <ul>
+                {% for menu in menus%}
+                    <li><a href='{{ menu }}'>{{ menu }}</li>
+                {% endfor %}
+            </ul>    
+        {% elif menu_name %}
+            <h3><a href={% url 'main_menu' %}>Back to main menu</h3>
+            {% draw_menu menu_name menu_item %}
+        {% endif %}
+    </body>
+</html>
